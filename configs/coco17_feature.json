@@ -1,0 +1,42 @@
+{
+  "seed": 42,
+  "dataset": {
+    "name": "COCO",
+    "data_root": "datasets/COCO17",
+    "backbone": "resnet50",
+    "num_labels": 80,
+    "input_dim": 2048
+  },
+  "episode": {
+    "num_labels": 5,
+    "num_support_per_label": 15,
+    "num_query": 32
+  },
+  "model": {
+    "num_features": 256,
+    "metric": "euclidean",
+    "label_weight_mode": "positive_gated",
+    "label_enhancer_hidden_dim": 64
+  },
+  "training": {
+    "episodes": 1500,
+    "learning_rate": 1e-4,
+    "weight_decay": 1e-4,
+    "support_loss_weight": 0.05,
+    "support_loss_type": "bce",
+    "flem_alpha": 0.01,
+    "flem_beta": 0.01,
+    "flem_method": "ld",
+    "flem_threshold": 0.0,
+    "log_every": 10,
+    "eval_every": 50,
+    "eval_episodes": 50,
+    "checkpoint_path": "experiments/checkpoints/coco17_best.pt"
+  },
+  "evaluation": {
+    "phase": "test",
+    "episodes": 200,
+    "threshold": 0.5,
+    "threshold_search": true
+  }
+}

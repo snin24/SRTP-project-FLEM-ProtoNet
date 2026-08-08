@@ -1,0 +1,41 @@
+{
+  "seed": 21,
+  "dataset": {
+    "name": "VOC2007",
+    "data_root": "datasets/VOC2007",
+    "backbone": "resnet50",
+    "num_labels": 20,
+    "input_dim": 2048
+  },
+  "episode": {
+    "num_labels": 5,
+    "num_support_per_label": 5,
+    "num_query": 16
+  },
+  "model": {
+    "num_features": 128,
+    "metric": "euclidean",
+    "label_weight_mode": "binary"
+  },
+  "training": {
+    "episodes": 1500,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "support_loss_weight": 0.0,
+    "support_loss_type": "bce",
+    "flem_alpha": 0.01,
+    "flem_beta": 0.01,
+    "flem_method": "ld",
+    "flem_threshold": 0.0,
+    "log_every": 10,
+    "eval_every": 50,
+    "eval_episodes": 50,
+    "checkpoint_path": "experiments/checkpoints/voc2007_protonet_ml_best.pt"
+  },
+  "evaluation": {
+    "phase": "test",
+    "episodes": 200,
+    "threshold": 0.5,
+    "threshold_search": true
+  }
+}

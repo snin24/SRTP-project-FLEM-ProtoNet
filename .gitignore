@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+*.pt
+*.pth
+experiments/checkpoints/
+datasets/
+.vscode
