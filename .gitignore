@@ -8,3 +8,4 @@ venv/
 experiments/checkpoints/
 datasets/
 .vscode
+docs/
