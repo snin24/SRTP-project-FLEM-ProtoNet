@@ -3,7 +3,7 @@
   "dataset": {
     "name": "NUSWIDE",
     "data_root": "datasets/NUSWIDE",
-    "backbone": "resnet50",
+    "backbone": "resnet101",
     "num_labels": 21,
     "input_dim": 2048
   },
@@ -13,12 +13,12 @@
     "num_query": 16
   },
   "model": {
-    "num_features": 128,
+    "num_features": 256,
     "metric": "euclidean",
     "label_weight_mode": "binary"
   },
   "training": {
-    "episodes": 2000,
+    "episodes": 1500,
     "learning_rate": 0.001,
     "weight_decay": 0.0001,
     "support_loss_weight": 0.0,

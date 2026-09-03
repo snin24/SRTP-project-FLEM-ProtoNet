@@ -1,9 +1,9 @@
 {
-  "seed": 21,
+  "seed": 20,
   "dataset": {
     "name": "VOC2007",
     "data_root": "datasets/VOC2007",
-    "backbone": "resnet50",
+    "backbone": "resnet101",
     "num_labels": 20,
     "input_dim": 2048
   },
@@ -13,7 +13,7 @@
     "num_query": 16
   },
   "model": {
-    "num_features": 128,
+    "num_features": 256,
     "metric": "euclidean",
     "label_weight_mode": "binary"
   },

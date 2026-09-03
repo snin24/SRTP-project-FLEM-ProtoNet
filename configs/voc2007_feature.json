@@ -1,9 +1,9 @@
 {
-  "seed": 21,
+  "seed": 20,
   "dataset": {
     "name": "VOC2007",
     "data_root": "datasets/VOC2007",
-    "backbone": "resnet50",
+    "backbone": "resnet101",
     "num_labels": 20,
     "input_dim": 2048
   },
@@ -22,7 +22,7 @@
     "episodes": 1500,
     "learning_rate": 0.001,
     "weight_decay": 0.0001,
-    "support_loss_weight": 0.1,
+    "support_loss_weight": 0.05,
     "support_loss_type": "bce",
     "flem_alpha": 0.01,
     "flem_beta": 0.01,

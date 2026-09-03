@@ -21,6 +21,12 @@ DATASET_METADATA = {
     },
 }
 
+BACKBONE_FEATURE_DIM = {
+    "resnet50": 2048,
+    "resnet101": 2048,
+    "conv4": 1600,
+}
+
 
 class MultiLabelFeatureDataset(Dataset):
     def __init__(
@@ -68,7 +74,10 @@ class MultiLabelFeatureDataset(Dataset):
             raise ValueError("labels must have shape [num_samples, num_labels].")
         if self.features.shape[0] != self.labels.shape[0]:
             raise ValueError("features and labels must have the same sample count.")
-        if self.features.shape[1] != self.meta["feature_dim"]:
+        expected_feature_dim = BACKBONE_FEATURE_DIM.get(
+            self.backbone, self.meta["feature_dim"]
+        )
+        if self.features.shape[1] != expected_feature_dim:
             raise ValueError("feature dimension does not match dataset metadata.")
         if self.labels.shape[1] != self.meta["num_labels"]:
             raise ValueError("label dimension does not match dataset metadata.")

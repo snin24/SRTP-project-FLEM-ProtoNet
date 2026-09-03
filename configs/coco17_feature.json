@@ -3,14 +3,14 @@
   "dataset": {
     "name": "COCO",
     "data_root": "datasets/COCO17",
-    "backbone": "resnet50",
+    "backbone": "resnet101",
     "num_labels": 80,
     "input_dim": 2048
   },
   "episode": {
     "num_labels": 5,
     "num_support_per_label": 15,
-    "num_query": 32
+    "num_query": 16
   },
   "model": {
     "num_features": 256,
@@ -20,7 +20,7 @@
   },
   "training": {
     "episodes": 1500,
-    "learning_rate": 1e-4,
+    "learning_rate": 0.001,
     "weight_decay": 1e-4,
     "support_loss_weight": 0.05,
     "support_loss_type": "bce",
