@@ -1,0 +1,52 @@
+{
+  "tag": "voc2007_label_weight_mode_positive_gated_resnet50_seed2024",
+  "dataset": "voc2007",
+  "ablation": "label_weight_mode",
+  "setting": "positive_gated",
+  "backbone": "resnet50",
+  "seed": 2024,
+  "training_episodes": 1500,
+  "status": "ok",
+  "run_dir": "experiment_results\\ablation_20260922_095440\\voc2007_label_weight_mode_positive_gated_resnet50_seed2024",
+  "commands": [
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\train.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\voc2007_label_weight_mode_positive_gated_resnet50_seed2024\\effective_config.json",
+      "--device",
+      "cpu"
+    ],
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\evaluate.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\voc2007_label_weight_mode_positive_gated_resnet50_seed2024\\effective_config.json",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\voc2007_label_weight_mode_positive_gated_resnet50_seed2024\\best.pt",
+      "--phase",
+      "test",
+      "--device",
+      "cpu"
+    ]
+  ],
+  "metrics": {
+    "AP-valid-label-fraction": 0.887,
+    "Coverage": 0.051813,
+    "Hamming": 0.09375,
+    "Macro-F1": 0.703099,
+    "Micro-F1": 0.800011,
+    "Ranking": 0.050208,
+    "label_positive_rate": 0.210938,
+    "loss": 0.274447,
+    "mAP": 0.89591,
+    "pred_positive_rate": 0.239813,
+    "prob_max": 0.662879,
+    "prob_mean": 0.155275,
+    "prob_min": 0.0,
+    "threshold-from-validation": 0.3
+  },
+  "elapsed_seconds": 41.43422910000663
+}

@@ -47,6 +47,7 @@ def train_episode(
     flem_method="ld",
     flem_threshold=0.0,
     reduction="mean",
+    episode_labels=None,
 ):
     model.train()
     optimizer.zero_grad()
@@ -56,6 +57,11 @@ def train_episode(
         support_labels=support_labels,
         query_images=query_images,
     )
+    if episode_labels is not None:
+        outputs = dict(outputs)
+        outputs["logits"] = outputs["logits"].index_select(1, episode_labels)
+        outputs["probabilities"] = torch.sigmoid(outputs["logits"])
+        query_labels = query_labels.index_select(1, episode_labels)
     total_loss, losses = _compute_episode_loss(
         outputs=outputs,
         support_labels=support_labels,
@@ -87,6 +93,7 @@ def evaluate_episode(
     flem_method="ld",
     flem_threshold=0.0,
     reduction="mean",
+    episode_labels=None,
 ):
     model.eval()
     with torch.no_grad():
@@ -95,6 +102,11 @@ def evaluate_episode(
             support_labels=support_labels,
             query_images=query_images,
         )
+        if episode_labels is not None:
+            outputs = dict(outputs)
+            outputs["logits"] = outputs["logits"].index_select(1, episode_labels)
+            outputs["probabilities"] = torch.sigmoid(outputs["logits"])
+            query_labels = query_labels.index_select(1, episode_labels)
         _, losses = _compute_episode_loss(
             outputs=outputs,
             support_labels=support_labels,

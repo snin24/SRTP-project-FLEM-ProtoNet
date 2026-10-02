@@ -1,0 +1,61 @@
+{
+  "dataset": "nuswide",
+  "model": "baseline",
+  "seed": 123,
+  "backbone": "resnet101",
+  "status": "ok",
+  "commands": [
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\train.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\configs\\nuswide_baseline.json",
+      "--seed",
+      "123",
+      "--backbone",
+      "resnet101",
+      "--device",
+      "cpu",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\recovery_20260922_000902\\nuswide_baseline_resnet101_seed123\\best.pt"
+    ],
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\evaluate.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\configs\\nuswide_baseline.json",
+      "--seed",
+      "123",
+      "--backbone",
+      "resnet101",
+      "--device",
+      "cpu",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\recovery_20260922_000902\\nuswide_baseline_resnet101_seed123\\best.pt",
+      "--phase",
+      "test"
+    ]
+  ],
+  "folder": "experiment_results\\recovery_20260922_000902\\nuswide_baseline_resnet101_seed123",
+  "training_episodes": 1500,
+  "test_episodes": 200,
+  "metrics": {
+    "AP-valid-label-fraction": 0.954,
+    "Coverage": 0.168688,
+    "Hamming": 0.213937,
+    "Macro-F1": 0.531303,
+    "Micro-F1": 0.62348,
+    "Ranking": 0.120677,
+    "label_positive_rate": 0.268187,
+    "loss": 0.446815,
+    "mAP": 0.692984,
+    "pred_positive_rate": 0.309,
+    "prob_max": 0.610246,
+    "prob_mean": 0.213836,
+    "prob_min": 8e-05,
+    "threshold-from-validation": 0.3
+  },
+  "elapsed_seconds": 65.65296830001171
+}

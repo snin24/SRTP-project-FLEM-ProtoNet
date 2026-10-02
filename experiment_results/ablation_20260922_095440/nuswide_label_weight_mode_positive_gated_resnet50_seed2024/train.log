@@ -1,0 +1,190 @@
+episode=10
+episode=20
+episode=30
+episode=40
+episode=50
+val episode=50 mAP=0.6803
+saved_checkpoint=D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\ablation_20260922_095440\nuswide_label_weight_mode_positive_gated_resnet50_seed2024\best.pt
+episode=60
+episode=70
+episode=80
+episode=90
+episode=100
+val episode=100 mAP=0.6672
+episode=110
+episode=120
+episode=130
+episode=140
+episode=150
+val episode=150 mAP=0.6897
+saved_checkpoint=D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\ablation_20260922_095440\nuswide_label_weight_mode_positive_gated_resnet50_seed2024\best.pt
+episode=160
+episode=170
+episode=180
+episode=190
+episode=200
+val episode=200 mAP=0.6981
+saved_checkpoint=D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\ablation_20260922_095440\nuswide_label_weight_mode_positive_gated_resnet50_seed2024\best.pt
+episode=210
+episode=220
+episode=230
+episode=240
+episode=250
+val episode=250 mAP=0.6875
+episode=260
+episode=270
+episode=280
+episode=290
+episode=300
+val episode=300 mAP=0.6776
+episode=310
+episode=320
+episode=330
+episode=340
+episode=350
+val episode=350 mAP=0.7074
+saved_checkpoint=D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\ablation_20260922_095440\nuswide_label_weight_mode_positive_gated_resnet50_seed2024\best.pt
+episode=360
+episode=370
+episode=380
+episode=390
+episode=400
+val episode=400 mAP=0.7195
+saved_checkpoint=D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\ablation_20260922_095440\nuswide_label_weight_mode_positive_gated_resnet50_seed2024\best.pt
+episode=410
+episode=420
+episode=430
+episode=440
+episode=450
+val episode=450 mAP=0.7049
+episode=460
+episode=470
+episode=480
+episode=490
+episode=500
+val episode=500 mAP=0.7169
+episode=510
+episode=520
+episode=530
+episode=540
+episode=550
+val episode=550 mAP=0.7310
+saved_checkpoint=D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\ablation_20260922_095440\nuswide_label_weight_mode_positive_gated_resnet50_seed2024\best.pt
+episode=560
+episode=570
+episode=580
+episode=590
+episode=600
+val episode=600 mAP=0.7198
+episode=610
+episode=620
+episode=630
+episode=640
+episode=650
+val episode=650 mAP=0.7145
+episode=660
+episode=670
+episode=680
+episode=690
+episode=700
+val episode=700 mAP=0.7150
+episode=710
+episode=720
+episode=730
+episode=740
+episode=750
+val episode=750 mAP=0.7346
+saved_checkpoint=D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\ablation_20260922_095440\nuswide_label_weight_mode_positive_gated_resnet50_seed2024\best.pt
+episode=760
+episode=770
+episode=780
+episode=790
+episode=800
+val episode=800 mAP=0.7415
+saved_checkpoint=D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\ablation_20260922_095440\nuswide_label_weight_mode_positive_gated_resnet50_seed2024\best.pt
+episode=810
+episode=820
+episode=830
+episode=840
+episode=850
+val episode=850 mAP=0.7410
+episode=860
+episode=870
+episode=880
+episode=890
+episode=900
+val episode=900 mAP=0.7373
+episode=910
+episode=920
+episode=930
+episode=940
+episode=950
+val episode=950 mAP=0.7585
+saved_checkpoint=D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\ablation_20260922_095440\nuswide_label_weight_mode_positive_gated_resnet50_seed2024\best.pt
+episode=960
+episode=970
+episode=980
+episode=990
+episode=1000
+val episode=1000 mAP=0.7270
+episode=1010
+episode=1020
+episode=1030
+episode=1040
+episode=1050
+val episode=1050 mAP=0.7453
+episode=1060
+episode=1070
+episode=1080
+episode=1090
+episode=1100
+val episode=1100 mAP=0.7298
+episode=1110
+episode=1120
+episode=1130
+episode=1140
+episode=1150
+val episode=1150 mAP=0.7405
+episode=1160
+episode=1170
+episode=1180
+episode=1190
+episode=1200
+val episode=1200 mAP=0.7441
+episode=1210
+episode=1220
+episode=1230
+episode=1240
+episode=1250
+val episode=1250 mAP=0.7425
+episode=1260
+episode=1270
+episode=1280
+episode=1290
+episode=1300
+val episode=1300 mAP=0.7349
+episode=1310
+episode=1320
+episode=1330
+episode=1340
+episode=1350
+val episode=1350 mAP=0.7367
+episode=1360
+episode=1370
+episode=1380
+episode=1390
+episode=1400
+val episode=1400 mAP=0.7428
+episode=1410
+episode=1420
+episode=1430
+episode=1440
+episode=1450
+val episode=1450 mAP=0.7535
+episode=1460
+episode=1470
+episode=1480
+episode=1490
+episode=1500
+val episode=1500 mAP=0.7471
+train: done

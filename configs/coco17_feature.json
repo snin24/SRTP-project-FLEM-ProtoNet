@@ -9,7 +9,7 @@
   },
   "episode": {
     "num_labels": 5,
-    "num_support_per_label": 15,
+    "num_support_per_label": 5,
     "num_query": 16
   },
   "model": {

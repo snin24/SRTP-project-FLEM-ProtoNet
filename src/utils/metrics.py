@@ -119,3 +119,40 @@ def evaluate_multilabel_predictions(
         )
 
     return metrics
+
+
+EPISODE_PROTOCOL = "episode_mean_v2_fixed_val"
+
+
+def evaluate_episodic_predictions(labels, probabilities, threshold=0.5, threshold_search=False):
+    """Equal-weight episode means; local columns must never be pooled as classes.
+
+    AP excludes classes with no positive query in that episode, matching the
+    existing AP convention. Report that coverage explicitly. Threshold search
+    is for validation only and optimizes mean episode Micro-F1.
+    """
+    if not labels or len(labels) != len(probabilities):
+        raise ValueError("Expected matching nonempty episode lists")
+    targets = [to_numpy(y) for y in labels]
+    scores = [to_numpy(p) for p in probabilities]
+    def compute(cutoff):
+        rows = [multilabel_metrics(y, p, threshold=cutoff) for y, p in zip(targets, scores)]
+        return {key: float(np.mean([row[key] for row in rows])) for key in rows[0]}
+    metrics = compute(threshold)
+    metrics.update(prediction_statistics(np.concatenate(targets), np.concatenate(scores), threshold))
+    metrics["AP-valid-label-fraction"] = float(np.mean([np.mean(y.sum(axis=0) > 0) for y in targets]))
+    if threshold_search:
+        best_value, best_threshold = -1.0, None
+        for cutoff in np.arange(0.05, 0.96, 0.05):
+            f1_values = []
+            for y, p in zip(targets, scores):
+                predicted = p > cutoff
+                denominator = predicted.sum() + y.sum()
+                f1_values.append(float(2 * (predicted * y).sum() / denominator) if denominator else 0.0)
+            value = float(np.mean(f1_values))
+            if value > best_value:
+                best_value, best_threshold = value, float(cutoff)
+        metrics["Best-threshold"] = best_threshold
+        metrics["Best-Micro-F1"] = best_value
+        metrics.update({f"Tuned-{k}": v for k, v in compute(best_threshold).items()})
+    return metrics

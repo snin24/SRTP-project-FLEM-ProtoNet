@@ -15,7 +15,7 @@ from src.data import MultiLabelEpisodeSampler, MultiLabelFeatureDataset
 from src.models import FLEMProtoNet
 from src.training import evaluate_episode, train_episode
 from src.utils import resolve_device
-from src.utils.metrics import evaluate_multilabel_predictions
+from src.utils.metrics import EPISODE_PROTOCOL, evaluate_episodic_predictions
 
 
 def load_config(path):
@@ -73,7 +73,7 @@ def build_model(config):
     )
 
 
-def evaluate_sampler(model, sampler, config, device, episodes, threshold):
+def evaluate_sampler(model, sampler, config, device, episodes, threshold, threshold_search=None):
     all_probabilities = []
     all_labels = []
     losses = []
@@ -87,6 +87,7 @@ def evaluate_sampler(model, sampler, config, device, episodes, threshold):
             support_labels=episode["support_labels"],
             query_images=episode["query_features"],
             query_labels=episode["query_labels"],
+            episode_labels=episode["episode_labels"],
             support_loss_weight=training_config["support_loss_weight"],
             support_loss_type=training_config.get("support_loss_type", "flem"),
             flem_alpha=training_config.get("flem_alpha", 0.001),
@@ -95,16 +96,18 @@ def evaluate_sampler(model, sampler, config, device, episodes, threshold):
             flem_threshold=training_config.get("flem_threshold", 0.0),
         )
         all_probabilities.append(outputs["probabilities"].cpu())
-        all_labels.append(episode["query_labels"].cpu())
+        selected_labels = episode["query_labels"].index_select(
+            1, episode["episode_labels"]
+        )
+        all_labels.append(selected_labels.cpu())
         losses.append(loss_parts["total"].item())
 
-    probabilities = torch.cat(all_probabilities, dim=0)
-    labels = torch.cat(all_labels, dim=0)
-    metrics = evaluate_multilabel_predictions(
-        labels,
-        probabilities,
+    metrics = evaluate_episodic_predictions(
+        all_labels,
+        all_probabilities,
         threshold=threshold,
-        threshold_search=config["evaluation"].get("threshold_search", False),
+        threshold_search=(config["evaluation"].get("threshold_search", False)
+                          if threshold_search is None else threshold_search),
     )
     metrics["loss"] = float(np.mean(losses))
     return metrics
@@ -124,10 +127,18 @@ def main():
     parser.add_argument("--eval-every", type=int, default=None)
     parser.add_argument("--eval-episodes", type=int, default=None)
     parser.add_argument("--checkpoint", default=None)
+    parser.add_argument("--backbone", default=None, choices=["resnet50", "resnet101", "conv4"])
+    parser.add_argument("--seed", type=int, default=None)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     args = parser.parse_args()
 
     config = load_config(args.config)
+    if args.seed is not None:
+        config["seed"] = args.seed
+    if args.backbone is not None:
+        config["dataset"]["backbone"] = args.backbone
+        if args.backbone == "conv4":
+            config["dataset"]["input_dim"] = 1600
     if args.episodes is not None:
         config["training"]["episodes"] = args.episodes
     if args.eval_every is not None:
@@ -144,6 +155,7 @@ def main():
     val_dataset = build_dataset(config, phase="val")
     train_sampler = build_sampler(config, train_dataset, seed=config["seed"])
     val_sampler = build_sampler(config, val_dataset, seed=config["seed"] + 1)
+    validation_rng_state = val_sampler.rng.getstate()
 
     model = build_model(config).to(device)
     optimizer = torch.optim.Adam(
@@ -152,7 +164,7 @@ def main():
         weight_decay=config["training"]["weight_decay"],
     )
 
-    best_micro_f1 = -1.0
+    best_validation_map = -1.0
     checkpoint_path = Path(config["training"]["checkpoint_path"])
     checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -165,6 +177,7 @@ def main():
             support_labels=episode["support_labels"],
             query_images=episode["query_features"],
             query_labels=episode["query_labels"],
+            episode_labels=episode["episode_labels"],
             support_loss_weight=config["training"]["support_loss_weight"],
             support_loss_type=config["training"].get("support_loss_type", "flem"),
             flem_alpha=config["training"].get("flem_alpha", 0.001),
@@ -182,7 +195,8 @@ def main():
             # )
             print(f"episode={episode_idx}")
 
-        if episode_idx % config["training"]["eval_every"] == 0:
+        if episode_idx % config["training"]["eval_every"] == 0 or episode_idx == config["training"]["episodes"]:
+            val_sampler.rng.setstate(validation_rng_state)
             metrics = evaluate_sampler(
                 model=model,
                 sampler=val_sampler,
@@ -194,15 +208,17 @@ def main():
             # print_metrics(f"val episode={episode_idx}", metrics)
             print(f"val episode={episode_idx} mAP={metrics.get('Tuned-mAP', metrics['mAP']):.4f}")
 
-            checkpoint_metric = metrics.get("Best-Micro-F1", metrics["Micro-F1"])
-            if checkpoint_metric > best_micro_f1:
-                best_micro_f1 = checkpoint_metric
+            checkpoint_metric = metrics["mAP"]
+            if checkpoint_metric > best_validation_map:
+                best_validation_map = checkpoint_metric
                 torch.save(
                     {
                         "model_state_dict": model.state_dict(),
                         "config": config,
                         "metrics": metrics,
                         "episode": episode_idx,
+                        "evaluation_protocol": EPISODE_PROTOCOL,
+                        "decision_threshold": metrics.get("Best-threshold", config["evaluation"]["threshold"]),
                     },
                     checkpoint_path,
                 )

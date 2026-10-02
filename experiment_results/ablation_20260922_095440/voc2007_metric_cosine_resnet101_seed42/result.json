@@ -1,0 +1,52 @@
+{
+  "tag": "voc2007_metric_cosine_resnet101_seed42",
+  "dataset": "voc2007",
+  "ablation": "metric",
+  "setting": "cosine",
+  "backbone": "resnet101",
+  "seed": 42,
+  "training_episodes": 1500,
+  "status": "ok",
+  "run_dir": "experiment_results\\ablation_20260922_095440\\voc2007_metric_cosine_resnet101_seed42",
+  "commands": [
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\train.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\voc2007_metric_cosine_resnet101_seed42\\effective_config.json",
+      "--device",
+      "cpu"
+    ],
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\evaluate.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\voc2007_metric_cosine_resnet101_seed42\\effective_config.json",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\voc2007_metric_cosine_resnet101_seed42\\best.pt",
+      "--phase",
+      "test",
+      "--device",
+      "cpu"
+    ]
+  ],
+  "metrics": {
+    "AP-valid-label-fraction": 0.883,
+    "Coverage": 0.077188,
+    "Hamming": 0.154688,
+    "Macro-F1": 0.638007,
+    "Micro-F1": 0.728178,
+    "Ranking": 0.079453,
+    "label_positive_rate": 0.212688,
+    "loss": 0.47443,
+    "mAP": 0.855962,
+    "pred_positive_rate": 0.33325,
+    "prob_max": 0.816152,
+    "prob_mean": 0.400938,
+    "prob_min": 0.203413,
+    "threshold-from-validation": 0.45
+  },
+  "elapsed_seconds": 41.86854620001395
+}

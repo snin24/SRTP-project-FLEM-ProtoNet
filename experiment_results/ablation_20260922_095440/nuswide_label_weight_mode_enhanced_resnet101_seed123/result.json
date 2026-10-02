@@ -1,0 +1,52 @@
+{
+  "tag": "nuswide_label_weight_mode_enhanced_resnet101_seed123",
+  "dataset": "nuswide",
+  "ablation": "label_weight_mode",
+  "setting": "enhanced",
+  "backbone": "resnet101",
+  "seed": 123,
+  "training_episodes": 1500,
+  "status": "ok",
+  "run_dir": "experiment_results\\ablation_20260922_095440\\nuswide_label_weight_mode_enhanced_resnet101_seed123",
+  "commands": [
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\train.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\nuswide_label_weight_mode_enhanced_resnet101_seed123\\effective_config.json",
+      "--device",
+      "cpu"
+    ],
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\evaluate.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\nuswide_label_weight_mode_enhanced_resnet101_seed123\\effective_config.json",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\nuswide_label_weight_mode_enhanced_resnet101_seed123\\best.pt",
+      "--phase",
+      "test",
+      "--device",
+      "cpu"
+    ]
+  ],
+  "metrics": {
+    "AP-valid-label-fraction": 0.954,
+    "Coverage": 0.181375,
+    "Hamming": 0.192125,
+    "Macro-F1": 0.515175,
+    "Micro-F1": 0.63128,
+    "Ranking": 0.13625,
+    "label_positive_rate": 0.268187,
+    "loss": 0.43763,
+    "mAP": 0.712244,
+    "pred_positive_rate": 0.266937,
+    "prob_max": 0.641529,
+    "prob_mean": 0.219051,
+    "prob_min": 4.4e-05,
+    "threshold-from-validation": 0.35
+  },
+  "elapsed_seconds": 78.63324639998609
+}

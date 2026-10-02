@@ -15,7 +15,8 @@ from src.data import MultiLabelEpisodeSampler, MultiLabelFeatureDataset
 from src.models import FLEMProtoNet
 from src.training import evaluate_episode
 from src.utils import resolve_device
-from src.utils.metrics import evaluate_multilabel_predictions
+from src.utils.metrics import EPISODE_PROTOCOL
+from scripts.train import evaluate_sampler
 
 
 def load_config(path):
@@ -62,9 +63,17 @@ def main():
     parser.add_argument("--phase", default=None, choices=["train", "val", "test"])
     parser.add_argument("--episodes", type=int, default=None)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
+    parser.add_argument("--backbone", default=None, choices=["resnet50", "resnet101", "conv4"])
+    parser.add_argument("--seed", type=int, default=None)
     args = parser.parse_args()
 
     config = load_config(args.config)
+    if args.seed is not None:
+        config["seed"] = args.seed
+    if args.backbone is not None:
+        config["dataset"]["backbone"] = args.backbone
+        if args.backbone == "conv4":
+            config["dataset"]["input_dim"] = 1600
     set_seed(config["seed"])
     device = resolve_device(args.device)
 
@@ -87,43 +96,25 @@ def main():
     model = build_model(config).to(device)
     checkpoint_path = args.checkpoint or config["training"]["checkpoint_path"]
     if checkpoint_path and Path(checkpoint_path).exists():
-        checkpoint = torch.load(checkpoint_path, map_location=device)
+        # Checkpoints produced by this trusted project include the training
+        # config/metrics in addition to tensors; explicitly allow the full
+        # pickle format on PyTorch >=2.6.
+        checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)
+        if checkpoint.get("evaluation_protocol") != EPISODE_PROTOCOL:
+            raise ValueError("Checkpoint uses an older evaluation protocol; retrain before formal evaluation.")
+        for key in ("dataset", "episode", "model"):
+            if checkpoint["config"][key] != config[key]:
+                raise ValueError(f"Checkpoint/config mismatch: {key}")
         model.load_state_dict(checkpoint["model_state_dict"])
         print(f"loaded_checkpoint: {checkpoint_path}")
     else:
-        print("loaded_checkpoint: none")
+        raise FileNotFoundError(f"Checkpoint not found: {checkpoint_path}")
 
-    all_probabilities = []
-    all_labels = []
-    losses = []
-    for _ in range(episodes):
-        episode = move_episode_to_device(sampler.sample_episode(), device)
-        outputs, loss_parts = evaluate_episode(
-            model=model,
-            support_images=episode["support_features"],
-            support_labels=episode["support_labels"],
-            query_images=episode["query_features"],
-            query_labels=episode["query_labels"],
-            support_loss_weight=config["training"]["support_loss_weight"],
-            support_loss_type=config["training"].get("support_loss_type", "flem"),
-            flem_alpha=config["training"].get("flem_alpha", 0.001),
-            flem_beta=config["training"].get("flem_beta", 0.001),
-            flem_method=config["training"].get("flem_method", "ld"),
-            flem_threshold=config["training"].get("flem_threshold", 0.0),
-        )
-        all_probabilities.append(outputs["probabilities"].cpu())
-        all_labels.append(episode["query_labels"].cpu())
-        losses.append(loss_parts["total"].item())
-
-    probabilities = torch.cat(all_probabilities, dim=0)
-    labels = torch.cat(all_labels, dim=0)
-    metrics = evaluate_multilabel_predictions(
-        labels,
-        probabilities,
-        threshold=config["evaluation"]["threshold"],
-        threshold_search=config["evaluation"].get("threshold_search", False),
+    threshold = checkpoint["decision_threshold"]
+    metrics = evaluate_sampler(
+        model, sampler, config, device, episodes, threshold, threshold_search=False,
     )
-    metrics["loss"] = float(np.mean(losses))
+    metrics["threshold-from-validation"] = threshold
     print_metrics(metrics)
 
 

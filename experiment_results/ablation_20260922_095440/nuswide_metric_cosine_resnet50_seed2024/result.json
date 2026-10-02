@@ -1,0 +1,52 @@
+{
+  "tag": "nuswide_metric_cosine_resnet50_seed2024",
+  "dataset": "nuswide",
+  "ablation": "metric",
+  "setting": "cosine",
+  "backbone": "resnet50",
+  "seed": 2024,
+  "training_episodes": 1500,
+  "status": "ok",
+  "run_dir": "experiment_results\\ablation_20260922_095440\\nuswide_metric_cosine_resnet50_seed2024",
+  "commands": [
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\train.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\nuswide_metric_cosine_resnet50_seed2024\\effective_config.json",
+      "--device",
+      "cpu"
+    ],
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\evaluate.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\nuswide_metric_cosine_resnet50_seed2024\\effective_config.json",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\nuswide_metric_cosine_resnet50_seed2024\\best.pt",
+      "--phase",
+      "test",
+      "--device",
+      "cpu"
+    ]
+  ],
+  "metrics": {
+    "AP-valid-label-fraction": 0.957,
+    "Coverage": 0.193062,
+    "Hamming": 0.227687,
+    "Macro-F1": 0.555061,
+    "Micro-F1": 0.632332,
+    "Ranking": 0.14737,
+    "label_positive_rate": 0.269875,
+    "loss": 0.552024,
+    "mAP": 0.697553,
+    "pred_positive_rate": 0.357687,
+    "prob_max": 0.797598,
+    "prob_mean": 0.436129,
+    "prob_min": 0.197676,
+    "threshold-from-validation": 0.5
+  },
+  "elapsed_seconds": 67.13730810000561
+}

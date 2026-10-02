@@ -1,0 +1,15 @@
+loaded_checkpoint: D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\ablation_20260922_095440\nuswide_metric_cosine_resnet50_seed123\best.pt
+AP-valid-label-fraction: 0.954000
+Coverage: 0.188188
+Hamming: 0.235687
+Macro-F1: 0.561962
+Micro-F1: 0.636421
+Ranking: 0.143906
+label_positive_rate: 0.268187
+loss: 0.534276
+mAP: 0.722859
+pred_positive_rate: 0.386625
+prob_max: 0.807896
+prob_mean: 0.416214
+prob_min: 0.174575
+threshold-from-validation: 0.450000

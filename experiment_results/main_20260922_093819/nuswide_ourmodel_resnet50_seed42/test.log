@@ -1,0 +1,15 @@
+loaded_checkpoint: D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\main_20260922_093819\nuswide_ourmodel_resnet50_seed42\best.pt
+AP-valid-label-fraction: 0.962000
+Coverage: 0.174000
+Hamming: 0.177000
+Macro-F1: 0.570478
+Micro-F1: 0.679067
+Ranking: 0.115391
+label_positive_rate: 0.275813
+loss: 0.436647
+mAP: 0.760154
+pred_positive_rate: 0.289687
+prob_max: 0.658284
+prob_mean: 0.191470
+prob_min: 0.000061
+threshold-from-validation: 0.300000

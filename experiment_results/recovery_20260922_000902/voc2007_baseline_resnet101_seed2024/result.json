@@ -1,0 +1,61 @@
+{
+  "dataset": "voc2007",
+  "model": "baseline",
+  "seed": 2024,
+  "backbone": "resnet101",
+  "status": "ok",
+  "commands": [
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\train.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\configs\\voc2007_baseline.json",
+      "--seed",
+      "2024",
+      "--backbone",
+      "resnet101",
+      "--device",
+      "cpu",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\recovery_20260922_000902\\voc2007_baseline_resnet101_seed2024\\best.pt"
+    ],
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\evaluate.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\configs\\voc2007_baseline.json",
+      "--seed",
+      "2024",
+      "--backbone",
+      "resnet101",
+      "--device",
+      "cpu",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\recovery_20260922_000902\\voc2007_baseline_resnet101_seed2024\\best.pt",
+      "--phase",
+      "test"
+    ]
+  ],
+  "folder": "experiment_results\\recovery_20260922_000902\\voc2007_baseline_resnet101_seed2024",
+  "training_episodes": 1500,
+  "test_episodes": 200,
+  "metrics": {
+    "AP-valid-label-fraction": 0.887,
+    "Coverage": 0.053187,
+    "Hamming": 0.111,
+    "Macro-F1": 0.675808,
+    "Micro-F1": 0.764207,
+    "Ranking": 0.051875,
+    "label_positive_rate": 0.210938,
+    "loss": 0.292629,
+    "mAP": 0.870233,
+    "pred_positive_rate": 0.242188,
+    "prob_max": 0.643562,
+    "prob_mean": 0.152206,
+    "prob_min": 0.0,
+    "threshold-from-validation": 0.3
+  },
+  "elapsed_seconds": 41.07090459999745
+}

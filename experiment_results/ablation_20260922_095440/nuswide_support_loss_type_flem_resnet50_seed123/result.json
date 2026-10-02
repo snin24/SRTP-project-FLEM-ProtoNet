@@ -1,0 +1,52 @@
+{
+  "tag": "nuswide_support_loss_type_flem_resnet50_seed123",
+  "dataset": "nuswide",
+  "ablation": "support_loss_type",
+  "setting": "flem",
+  "backbone": "resnet50",
+  "seed": 123,
+  "training_episodes": 1500,
+  "status": "ok",
+  "run_dir": "experiment_results\\ablation_20260922_095440\\nuswide_support_loss_type_flem_resnet50_seed123",
+  "commands": [
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\train.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\nuswide_support_loss_type_flem_resnet50_seed123\\effective_config.json",
+      "--device",
+      "cpu"
+    ],
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\evaluate.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\nuswide_support_loss_type_flem_resnet50_seed123\\effective_config.json",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\nuswide_support_loss_type_flem_resnet50_seed123\\best.pt",
+      "--phase",
+      "test",
+      "--device",
+      "cpu"
+    ]
+  ],
+  "metrics": {
+    "AP-valid-label-fraction": 0.954,
+    "Coverage": 0.172312,
+    "Hamming": 0.211562,
+    "Macro-F1": 0.581372,
+    "Micro-F1": 0.665878,
+    "Ranking": 0.124531,
+    "label_positive_rate": 0.268187,
+    "loss": 0.448362,
+    "mAP": 0.726649,
+    "pred_positive_rate": 0.363625,
+    "prob_max": 0.638665,
+    "prob_mean": 0.225929,
+    "prob_min": 3.7e-05,
+    "threshold-from-validation": 0.3
+  },
+  "elapsed_seconds": 69.74742679999326
+}

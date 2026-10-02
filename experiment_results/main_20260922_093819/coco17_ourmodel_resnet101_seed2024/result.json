@@ -1,0 +1,51 @@
+{
+  "tag": "coco17_ourmodel_resnet101_seed2024",
+  "dataset": "coco17",
+  "model": "ourmodel",
+  "backbone": "resnet101",
+  "seed": 2024,
+  "training_episodes": 1500,
+  "status": "ok",
+  "run_dir": "experiment_results\\main_20260922_093819\\coco17_ourmodel_resnet101_seed2024",
+  "commands": [
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\train.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\main_20260922_093819\\coco17_ourmodel_resnet101_seed2024\\effective_config.json",
+      "--device",
+      "cpu"
+    ],
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\evaluate.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\main_20260922_093819\\coco17_ourmodel_resnet101_seed2024\\effective_config.json",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\main_20260922_093819\\coco17_ourmodel_resnet101_seed2024\\best.pt",
+      "--phase",
+      "test",
+      "--device",
+      "cpu"
+    ]
+  ],
+  "metrics": {
+    "AP-valid-label-fraction": 0.872,
+    "Coverage": 0.101,
+    "Hamming": 0.188687,
+    "Macro-F1": 0.561433,
+    "Micro-F1": 0.641449,
+    "Ranking": 0.108698,
+    "label_positive_rate": 0.213625,
+    "loss": 0.369395,
+    "mAP": 0.767926,
+    "pred_positive_rate": 0.301812,
+    "prob_max": 0.545053,
+    "prob_mean": 0.185795,
+    "prob_min": 4e-06,
+    "threshold-from-validation": 0.3
+  },
+  "elapsed_seconds": 53.906459299993
+}

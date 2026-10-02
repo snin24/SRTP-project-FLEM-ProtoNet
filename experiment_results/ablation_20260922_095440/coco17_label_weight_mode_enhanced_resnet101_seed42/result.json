@@ -1,0 +1,52 @@
+{
+  "tag": "coco17_label_weight_mode_enhanced_resnet101_seed42",
+  "dataset": "coco17",
+  "ablation": "label_weight_mode",
+  "setting": "enhanced",
+  "backbone": "resnet101",
+  "seed": 42,
+  "training_episodes": 1500,
+  "status": "ok",
+  "run_dir": "experiment_results\\ablation_20260922_095440\\coco17_label_weight_mode_enhanced_resnet101_seed42",
+  "commands": [
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\train.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\coco17_label_weight_mode_enhanced_resnet101_seed42\\effective_config.json",
+      "--device",
+      "cpu"
+    ],
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\evaluate.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\coco17_label_weight_mode_enhanced_resnet101_seed42\\effective_config.json",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\coco17_label_weight_mode_enhanced_resnet101_seed42\\best.pt",
+      "--phase",
+      "test",
+      "--device",
+      "cpu"
+    ]
+  ],
+  "metrics": {
+    "AP-valid-label-fraction": 0.883,
+    "Coverage": 0.108125,
+    "Hamming": 0.18675,
+    "Macro-F1": 0.562528,
+    "Micro-F1": 0.633685,
+    "Ranking": 0.116641,
+    "label_positive_rate": 0.21375,
+    "loss": 0.384546,
+    "mAP": 0.75142,
+    "pred_positive_rate": 0.28725,
+    "prob_max": 0.571276,
+    "prob_mean": 0.151031,
+    "prob_min": 0.0,
+    "threshold-from-validation": 0.25
+  },
+  "elapsed_seconds": 65.97520089999307
+}

@@ -1,0 +1,52 @@
+{
+  "tag": "nuswide_metric_euclidean_resnet101_seed123",
+  "dataset": "nuswide",
+  "ablation": "metric",
+  "setting": "euclidean",
+  "backbone": "resnet101",
+  "seed": 123,
+  "training_episodes": 1500,
+  "status": "ok",
+  "run_dir": "experiment_results\\ablation_20260922_095440\\nuswide_metric_euclidean_resnet101_seed123",
+  "commands": [
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\train.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\nuswide_metric_euclidean_resnet101_seed123\\effective_config.json",
+      "--device",
+      "cpu"
+    ],
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\evaluate.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\nuswide_metric_euclidean_resnet101_seed123\\effective_config.json",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\nuswide_metric_euclidean_resnet101_seed123\\best.pt",
+      "--phase",
+      "test",
+      "--device",
+      "cpu"
+    ]
+  ],
+  "metrics": {
+    "AP-valid-label-fraction": 0.954,
+    "Coverage": 0.17275,
+    "Hamming": 0.197,
+    "Macro-F1": 0.560845,
+    "Micro-F1": 0.653577,
+    "Ranking": 0.125182,
+    "label_positive_rate": 0.268187,
+    "loss": 0.440437,
+    "mAP": 0.726944,
+    "pred_positive_rate": 0.305563,
+    "prob_max": 0.642578,
+    "prob_mean": 0.198911,
+    "prob_min": 1e-06,
+    "threshold-from-validation": 0.3
+  },
+  "elapsed_seconds": 68.305751900014
+}

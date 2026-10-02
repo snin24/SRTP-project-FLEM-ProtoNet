@@ -1,0 +1,15 @@
+loaded_checkpoint: D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\recovery_20260922_000902\coco17_feature_resnet101_seed123\best.pt
+AP-valid-label-fraction: 0.888000
+Coverage: 0.099875
+Hamming: 0.172250
+Macro-F1: 0.574089
+Micro-F1: 0.654520
+Ranking: 0.107786
+label_positive_rate: 0.212625
+loss: 0.360481
+mAP: 0.775357
+pred_positive_rate: 0.276375
+prob_max: 0.558426
+prob_mean: 0.171324
+prob_min: 0.000000
+threshold-from-validation: 0.300000

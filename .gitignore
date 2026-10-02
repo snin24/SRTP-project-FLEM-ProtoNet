@@ -12,3 +12,5 @@ docs/
 run_cmd.md
 results.md
 报告
+tests\
+.agents

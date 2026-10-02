@@ -1,0 +1,15 @@
+loaded_checkpoint: D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\ablation_20260922_095440\voc2007_label_weight_mode_enhanced_resnet101_seed123\best.pt
+AP-valid-label-fraction: 0.902000
+Coverage: 0.049313
+Hamming: 0.099375
+Macro-F1: 0.700875
+Micro-F1: 0.787525
+Ranking: 0.050885
+label_positive_rate: 0.208375
+loss: 0.294001
+mAP: 0.881470
+pred_positive_rate: 0.238375
+prob_max: 0.606208
+prob_mean: 0.178158
+prob_min: 0.000010
+threshold-from-validation: 0.350000

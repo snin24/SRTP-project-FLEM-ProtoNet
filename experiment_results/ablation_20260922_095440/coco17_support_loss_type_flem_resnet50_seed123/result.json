@@ -1,0 +1,52 @@
+{
+  "tag": "coco17_support_loss_type_flem_resnet50_seed123",
+  "dataset": "coco17",
+  "ablation": "support_loss_type",
+  "setting": "flem",
+  "backbone": "resnet50",
+  "seed": 123,
+  "training_episodes": 1500,
+  "status": "ok",
+  "run_dir": "experiment_results\\ablation_20260922_095440\\coco17_support_loss_type_flem_resnet50_seed123",
+  "commands": [
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\train.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\coco17_support_loss_type_flem_resnet50_seed123\\effective_config.json",
+      "--device",
+      "cpu"
+    ],
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\evaluate.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\coco17_support_loss_type_flem_resnet50_seed123\\effective_config.json",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\coco17_support_loss_type_flem_resnet50_seed123\\best.pt",
+      "--phase",
+      "test",
+      "--device",
+      "cpu"
+    ]
+  ],
+  "metrics": {
+    "AP-valid-label-fraction": 0.888,
+    "Coverage": 0.1025,
+    "Hamming": 0.18625,
+    "Macro-F1": 0.576519,
+    "Micro-F1": 0.648545,
+    "Ranking": 0.11099,
+    "label_positive_rate": 0.212625,
+    "loss": 0.369863,
+    "mAP": 0.771057,
+    "pred_positive_rate": 0.3065,
+    "prob_max": 0.562966,
+    "prob_mean": 0.188291,
+    "prob_min": 9e-06,
+    "threshold-from-validation": 0.3
+  },
+  "elapsed_seconds": 53.558143500005826
+}

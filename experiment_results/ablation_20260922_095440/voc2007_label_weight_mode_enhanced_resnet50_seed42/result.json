@@ -1,0 +1,52 @@
+{
+  "tag": "voc2007_label_weight_mode_enhanced_resnet50_seed42",
+  "dataset": "voc2007",
+  "ablation": "label_weight_mode",
+  "setting": "enhanced",
+  "backbone": "resnet50",
+  "seed": 42,
+  "training_episodes": 1500,
+  "status": "ok",
+  "run_dir": "experiment_results\\ablation_20260922_095440\\voc2007_label_weight_mode_enhanced_resnet50_seed42",
+  "commands": [
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\train.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\voc2007_label_weight_mode_enhanced_resnet50_seed42\\effective_config.json",
+      "--device",
+      "cpu"
+    ],
+    [
+      "D:\\anaconda3\\python.exe",
+      "-u",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\scripts\\evaluate.py",
+      "--config",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\voc2007_label_weight_mode_enhanced_resnet50_seed42\\effective_config.json",
+      "--checkpoint",
+      "D:\\Projects\\PythonProject\\SRTP\\FLEM-ProtoNet-MultiLabel-FewShot\\experiment_results\\ablation_20260922_095440\\voc2007_label_weight_mode_enhanced_resnet50_seed42\\best.pt",
+      "--phase",
+      "test",
+      "--device",
+      "cpu"
+    ]
+  ],
+  "metrics": {
+    "AP-valid-label-fraction": 0.883,
+    "Coverage": 0.053187,
+    "Hamming": 0.103813,
+    "Macro-F1": 0.688288,
+    "Micro-F1": 0.783297,
+    "Ranking": 0.049896,
+    "label_positive_rate": 0.212688,
+    "loss": 0.285065,
+    "mAP": 0.893831,
+    "pred_positive_rate": 0.248125,
+    "prob_max": 0.658002,
+    "prob_mean": 0.159734,
+    "prob_min": 0.0,
+    "threshold-from-validation": 0.3
+  },
+  "elapsed_seconds": 41.62410909999744
+}

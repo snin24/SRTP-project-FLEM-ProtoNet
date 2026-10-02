@@ -1,0 +1,131 @@
+{
+  "verified_runs": [
+    {
+      "dataset": "coco17",
+      "model": "baseline",
+      "seed": 123,
+      "best_episode": 1150,
+      "validation_mAP": 0.8012893642123885
+    },
+    {
+      "dataset": "coco17",
+      "model": "baseline",
+      "seed": 42,
+      "best_episode": 1400,
+      "validation_mAP": 0.7632029556508044
+    },
+    {
+      "dataset": "coco17",
+      "model": "baseline",
+      "seed": 2024,
+      "best_episode": 650,
+      "validation_mAP": 0.7797903916603413
+    },
+    {
+      "dataset": "coco17",
+      "model": "ourmodel",
+      "seed": 42,
+      "best_episode": 1400,
+      "validation_mAP": 0.786635569354641
+    },
+    {
+      "dataset": "coco17",
+      "model": "ourmodel",
+      "seed": 123,
+      "best_episode": 1300,
+      "validation_mAP": 0.8136950447937628
+    },
+    {
+      "dataset": "coco17",
+      "model": "ourmodel",
+      "seed": 2024,
+      "best_episode": 900,
+      "validation_mAP": 0.7868697010021937
+    },
+    {
+      "dataset": "nuswide",
+      "model": "baseline",
+      "seed": 42,
+      "best_episode": 1450,
+      "validation_mAP": 0.7090087398195789
+    },
+    {
+      "dataset": "nuswide",
+      "model": "baseline",
+      "seed": 123,
+      "best_episode": 1150,
+      "validation_mAP": 0.6680849492950177
+    },
+    {
+      "dataset": "nuswide",
+      "model": "baseline",
+      "seed": 2024,
+      "best_episode": 1450,
+      "validation_mAP": 0.7233375284190747
+    },
+    {
+      "dataset": "nuswide",
+      "model": "ourmodel",
+      "seed": 42,
+      "best_episode": 1500,
+      "validation_mAP": 0.7635218892917598
+    },
+    {
+      "dataset": "nuswide",
+      "model": "ourmodel",
+      "seed": 123,
+      "best_episode": 1500,
+      "validation_mAP": 0.7114180020386692
+    },
+    {
+      "dataset": "nuswide",
+      "model": "ourmodel",
+      "seed": 2024,
+      "best_episode": 1500,
+      "validation_mAP": 0.7541820164877241
+    },
+    {
+      "dataset": "voc2007",
+      "model": "baseline",
+      "seed": 42,
+      "best_episode": 1350,
+      "validation_mAP": 0.8847007238672824
+    },
+    {
+      "dataset": "voc2007",
+      "model": "baseline",
+      "seed": 123,
+      "best_episode": 800,
+      "validation_mAP": 0.9097939685919337
+    },
+    {
+      "dataset": "voc2007",
+      "model": "baseline",
+      "seed": 2024,
+      "best_episode": 1350,
+      "validation_mAP": 0.894208292948372
+    },
+    {
+      "dataset": "voc2007",
+      "model": "ourmodel",
+      "seed": 42,
+      "best_episode": 1350,
+      "validation_mAP": 0.9087573136702531
+    },
+    {
+      "dataset": "voc2007",
+      "model": "ourmodel",
+      "seed": 123,
+      "best_episode": 1300,
+      "validation_mAP": 0.9304613951059857
+    },
+    {
+      "dataset": "voc2007",
+      "model": "ourmodel",
+      "seed": 2024,
+      "best_episode": 1500,
+      "validation_mAP": 0.9024484202116811
+    }
+  ],
+  "source_configs_unchanged": true
+}

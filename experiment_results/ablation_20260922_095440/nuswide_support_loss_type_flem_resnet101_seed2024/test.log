@@ -1,0 +1,15 @@
+loaded_checkpoint: D:\Projects\PythonProject\SRTP\FLEM-ProtoNet-MultiLabel-FewShot\experiment_results\ablation_20260922_095440\nuswide_support_loss_type_flem_resnet101_seed2024\best.pt
+AP-valid-label-fraction: 0.957000
+Coverage: 0.174500
+Hamming: 0.178937
+Macro-F1: 0.517921
+Micro-F1: 0.646639
+Ranking: 0.123281
+label_positive_rate: 0.269875
+loss: 0.444911
+mAP: 0.732837
+pred_positive_rate: 0.255188
+prob_max: 0.647717
+prob_mean: 0.215529
+prob_min: 0.000078
+threshold-from-validation: 0.350000
